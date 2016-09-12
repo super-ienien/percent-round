@@ -1,0 +1,28 @@
+{
+  "name": "percent-round",
+  "description": "Calculate percentages from a list of values.",
+  "main": "index.js",
+  "authors": [
+    "Vivien Anglesio"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "percent",
+    "percentage",
+    "round",
+    "rounded",
+    "rounding",
+    "calculate",
+    "always",
+    "100",
+    "sum"
+  ],
+  "homepage": "https://github.com/super-ienien/percent-round",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
