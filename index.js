@@ -24,8 +24,7 @@
         var percent;
         for (i = length-1; i>=0; i--)
         {
-            percent = percents[i] = ipt[i]*ratio;
-            check100 -= out[i] = Math.round(percent);
+            check100 -= out[i] = Math.round(percents[i] = ipt[i]*ratio);
         }
 
         if (check100 != 0)
@@ -53,7 +52,6 @@
                         idxs[idx] = true;
                         idxs.size++;
                     }
-
                 }
             );
             if (idxs.size === percents.length)
