@@ -1,6 +1,6 @@
 {
   "name": "percent-round",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Calculate percentages from a list of values.",
   "main": "index.js",
   "scripts": {
