@@ -4,106 +4,64 @@
             global.percentRound = factory();
 }(this, function () {
     'use strict';
+    return function percentRound (ipt, precision = 0) {
+        if (!Array.isArray(ipt)) {
+            throw new Error('percentRound input should be an Array');
+        }
+        const iptPercents = ipt.slice();
+        const length = ipt.length;
+        const out = new Array(length);
 
-    return function percentRounding (ipt)
-    {
-        var out;
-        var length = ipt.length;
-        for (var i = length-1, total = 0; i>=0; i--)
-        {
-            total += ipt[i];
+        let total = 0;
+        for (let i = length-1; i>=0; i--) {
+            if (typeof iptPercents[i] === "string") {
+                iptPercents[i] = Number.parseFloat(iptPercents[i]);
+            }
+            total += iptPercents[i] * 1;
+        }
+        if (isNaN(total)) {
+            throw new Error('percentRound invalid input');
         }
 
-        if (total === 0) return Array.apply(null, new Array(length)).map(Number.prototype.valueOf,0);
-
-        out = [];
-        var percents = [];
-
-        var ratio = 100/total;
-        var check100 = 100;
-        var percent;
-        for (i = length-1; i>=0; i--)
-        {
-            check100 -= out[i] = Math.round(percents[i] = ipt[i]*ratio);
-        }
-
-        if (check100 != 0)
-        {
-            var idxs = {size: 0};
-            percents = percents.map(function (val)
-            {
-                var floor = Math.floor(val);
-                if (floor === val) return val;
-                else return floor+0.5-val;
-            });
-
-            percents.forEach(check100 > 0 ?
-                function (val, idx) {
-                   if (val <= 0)
-                   {
-                       idxs[idx] = true;
-                       idxs.size++;
-                   }
-                }
-                :
-                function (val, idx) {
-                    if (val >= 0)
-                    {
-                        idxs[idx] = true;
-                        idxs.size++;
-                    }
-                }
-            );
-            if (idxs.size === percents.length)
-            {
-                out[0] += check100;
-                return out;
-            } //Impossible in theory but let's be careful...
-
-            var idxCopy = Object.assign({}, idxs);
-
-            while (check100 < 0)
-            {
-                if (idxs.size === percents.length) idxs = Object.assign({}, idxCopy);
-                var idx = percents.reduce(function (res, val, idx)
-                {
-                    if (idxs[idx] === true) return res;
-                    if (val>res.min)
-                    {
-                        res.min = val;
-                        res.minIdx = idx;
-                    }
-                    return res;
-                }, {min: -0.5, minIdx: 0}).minIdx;
-                out[idx] -= 1;
-                if (out[idx] === 0)
-                {
-                    idxCopy[idx] = true;
-                }
-                idxs[idx] = true;
-                idxs.size++;
-                check100++;
+        if (total === 0) {
+            out.fill(0);
+        } else {
+            const powPrecision = Math.pow(10, precision);
+            let check100 = 0;
+            for (let i = length-1; i >= 0; i--) {
+                check100 += out[i] = (Math.round(iptPercents[i] * powPrecision) / powPrecision);
             }
 
-            while (check100 > 0)
-            {
-                if (idxs.size === percents.length) idxs = {size: invalids};
-                var idx = percents.reduce(function (res, val, idx)
-                {
-                    if (idxs[idx] === true) return res;
-                    if (val<res.max)
-                    {
-                        res.max = val;
-                        res.maxIdx = idx;
+            if (check100 !== 100) {
+                const totalDiff = check100 - 100;
+                const roundGrain = 1 / powPrecision;
+                let grainCount = Math.round(Math.abs(totalDiff / roundGrain));
+                const diffs = new Array(length);
+
+                for (let i = 0; i < length; i++) {
+                    diffs[i] = Math.abs(out[i] - iptPercents[i]);
+                }
+
+                while (grainCount > 0) {
+                    let idx = 0;
+                    let maxDiff = diffs[0];
+                    for (let i = 1; i < length; i++) {
+                        if (maxDiff < diffs[i]) {
+                            idx = i;
+                            maxDiff = diffs[i];
+                        }
                     }
-                    return res;
-                }, {max: 0.5, maxIdx: 0}).maxIdx;
-                out[idx] += 1;
-                idxs[idx] = true;
-                idxs.size++;
-                check100--;
+                    if (check100 > 100) {
+                        out[idx] -= roundGrain;
+                    } else {
+                        out[idx] += roundGrain;
+                    }
+                    diffs[idx] -= roundGrain;
+                    grainCount--;
+                }
             }
         }
+
         return out;
     }
 }));
