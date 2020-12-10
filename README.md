@@ -36,6 +36,8 @@ percentRound([10.34, 20.043, 30.04, 39.567], 2);  // [10.34, 20.05, 30.04, 39.57
 
 ## Changelogs
 
+- 2.1.1
+  - fix wrong file version headers when publishing
 - 2.1.0
   - add typescript declaration
   - add ES6 module support
