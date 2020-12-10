@@ -6,7 +6,8 @@
   "module": "dist/percent-round.esm.js",
   "types": "./dist/percent-round.d.ts",
   "scripts": {
-    "prepublishOnly": "npm run build && npm run test",
+    "preversion": "npm run build && npm run test",
+    "version": "npm run build && npm run test",
     "build": "rollup -c rollup.config.js",
     "test": "mocha"
   },
