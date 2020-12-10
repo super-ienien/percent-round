@@ -1,6 +1,6 @@
 {
   "name": "percent-round",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Calculate percentages from a list of values.",
   "main": "dist/percent-round.js",
   "module": "dist/percent-round.esm.js",
