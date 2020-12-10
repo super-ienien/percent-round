@@ -2,6 +2,7 @@
 [![downloads](https://img.shields.io/npm/dm/percent-round)](https://npm-stat.com/charts.html?package=percent-round)
 [![license](https://img.shields.io/github/license/super-ienien/percent-round)](https://github.com/super-ienien/percent-round/blob/main/LICENSE)
 [![open issues](https://img.shields.io/github/issues-raw/super-ienien/percent-round.svg)](https://github.com/super-ienien/percent-round/issues)
+[![Build Status](https://travis-ci.com/super-ienien/percent-round.svg?branch=master)](https://travis-ci.com/super-ienien/percent-round)
 
 # 💯 Percent round
 #### Take an array of numeric values and returns an array with corresponding rounded percentages. The total of the returned values will always be 100.
