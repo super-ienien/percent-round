@@ -7,7 +7,7 @@
   "types": "./dist/percent-round.d.ts",
   "scripts": {
     "preversion": "npm run build && npm run test",
-    "version": "npm run build && npm run test",
+    "version": "npm run build && npm run test && git add -A dist",
     "build": "rollup -c rollup.config.js",
     "test": "mocha"
   },
