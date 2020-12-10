@@ -1,7 +1,7 @@
 {
   "name": "percent-round",
   "description": "Calculate percentages from a list of values.",
-  "main": "index.js",
+  "main": "dist/percent-round.min.js",
   "authors": [
     "Vivien Anglesio"
   ],

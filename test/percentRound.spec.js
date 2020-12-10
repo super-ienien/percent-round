@@ -1,6 +1,6 @@
 const mlog = require('mocha-logger').log;
 const assert = require('assert');
-const percentRound = require('../index');
+const percentRound = require('../dist/percent-round');
 
 function total (percents) {
     return percents.reduce((total, percent) => total + percent, 0)

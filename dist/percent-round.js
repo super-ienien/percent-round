@@ -1,10 +1,18 @@
-;(function (global, factory) {
+/**
+ * percent-round
+ * Generated: 2020-12-10
+ * Version: 2.0.0
+ * Copyright 2020 Vivien Anglesio
+ * License : MIT
+ */
+
+(function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-        typeof define === 'function' && define.amd ? define(factory) :
-            global.percentRound = factory();
-}(this, function () {
-    'use strict';
-    return function percentRound (ipt, precision = 0) {
+    typeof define === 'function' && define.amd ? define(factory) :
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.percentRound = factory());
+}(this, (function () { 'use strict';
+
+    function percentRound(ipt, precision = 0) {
         if (!Array.isArray(ipt)) {
             throw new Error('percentRound input should be an Array');
         }
@@ -13,7 +21,7 @@
         const out = new Array(length);
 
         let total = 0;
-        for (let i = length-1; i>=0; i--) {
+        for (let i = length - 1; i >= 0; i--) {
             if (typeof iptPercents[i] === "string") {
                 iptPercents[i] = Number.parseFloat(iptPercents[i]);
             }
@@ -28,7 +36,7 @@
         } else {
             const powPrecision = Math.pow(10, precision);
             let check100 = 0;
-            for (let i = length-1; i >= 0; i--) {
+            for (let i = length - 1; i >= 0; i--) {
                 check100 += out[i] = (Math.round(iptPercents[i] * powPrecision) / powPrecision);
             }
 
@@ -64,4 +72,10 @@
 
         return out;
     }
-}));
+
+    // For es import compatibility
+    percentRound.default = percentRound;
+
+    return percentRound;
+
+})));

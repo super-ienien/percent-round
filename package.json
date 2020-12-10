@@ -2,14 +2,19 @@
   "name": "percent-round",
   "version": "2.0.0",
   "description": "Calculate percentages from a list of values.",
-  "main": "index.js",
+  "main": "dist/percent-round.js",
+  "module": "dist/percent-round.esm.js",
+  "types": "./dist/percent-round.d.ts",
   "scripts": {
+    "prepublishOnly": "npm run build && npm run test",
+    "build": "rollup -c rollup.config.js",
     "test": "mocha"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/super-ienien/percent-round.git"
   },
+  "license": "MIT",
   "keywords": [
     "percent",
     "percentage",
@@ -22,13 +27,15 @@
     "sum"
   ],
   "author": "Vivien Anglesio",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/super-ienien/percent-round/issues"
   },
   "homepage": "https://github.com/super-ienien/percent-round#readme",
   "devDependencies": {
     "mocha": "^8.2.1",
-    "mocha-logger": "^1.0.7"
+    "mocha-logger": "^1.0.7",
+    "rollup": "^2.34.2",
+    "rollup-plugin-license": "^2.2.0",
+    "rollup-plugin-terser": "^7.0.2"
   }
 }
