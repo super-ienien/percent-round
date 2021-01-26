@@ -15,9 +15,9 @@ Zero Dependency
 ## Description
 ### *percentRound(percents, precision = 0)*
 
-- **percents** - Number[]
+- **input** - Number[]
 
-  An array of numbers that represent the percentage values to be rounded. The total should be 100, but it is not mandatory.
+  An array of numbers that will be turned to percents.
 
 
 - **precision** - Number (default = 0)
@@ -32,10 +32,13 @@ import percentRound from "percent-round";
 percentRound([10.34, 20.043, 30.04, 39.567]);     // [10,    20,    30,    40]
 percentRound([10.34, 20.043, 30.04, 39.567], 1);  // [10.3,  20.1,  30,    39.6]
 percentRound([10.34, 20.043, 30.04, 39.567], 2);  // [10.34, 20.05, 30.04, 39.57]
+percentRound([1, 2, 3, 4]);  // [10, 20, 30, 40]
+percentRound([60, 60]);  // [50, 50]
 ```
 
 ## Changelogs
-
+- 2.2.0
+  - Input numbers are automatically turned to percents
 - 2.1.1
   - fix wrong file version headers when publishing
 - 2.1.0

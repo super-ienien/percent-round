@@ -1,6 +1,6 @@
 /**
  * percent-round
- * Generated: 2020-12-10
+ * Generated: 2021-01-26
  * Version: 2.1.1
  * Copyright 2020 Vivien Anglesio
  * License : MIT
@@ -31,6 +31,7 @@ function percentRound(ipt, precision = 0) {
         const powPrecision = Math.pow(10, precision);
         let check100 = 0;
         for (let i = length - 1; i >= 0; i--) {
+            iptPercents[i] = 100 * iptPercents[i] / total;
             check100 += out[i] = (Math.round(iptPercents[i] * powPrecision) / powPrecision);
         }
 

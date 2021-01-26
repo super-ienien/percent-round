@@ -1,3 +1,3 @@
 export as namespace percentRound;
 
-export default function percentRound(percents: Array<number | string>, precision?: number): number[];
+export default function percentRound(input: Array<number | string>, precision?: number): number[];
