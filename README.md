@@ -37,6 +37,8 @@ percentRound([60, 60]);  // [50, 50]
 ```
 
 ## Changelogs
+- 2.2.1
+  - Fix IE not supporting default arguments [#6](https://github.com/super-ienien/percent-round/pull/6)
 - 2.2.0
   - Input numbers are automatically turned to percents
 - 2.1.1
