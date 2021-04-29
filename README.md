@@ -37,6 +37,8 @@ percentRound([60, 60]);  // [50, 50]
 ```
 
 ## Changelogs
+- 2.3.0
+  - Fix float rounding errors [#3](https://github.com/super-ienien/percent-round/issues/3) ([more about float rounding error](https://modernweb.com/what-every-javascript-developer-should-know-about-floating-points/))
 - 2.2.1
   - Fix IE not supporting default arguments [#6](https://github.com/super-ienien/percent-round/pull/6)
 - 2.2.0

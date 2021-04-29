@@ -49,6 +49,14 @@ function total (percents) {
              assert.equal(total(rounded), 100);
          });
      });
+     describe('Array with precision 2 and float rounding error', function() {
+         const input = [1, 1, 1]
+         const rounded = percentRound(input, 2);
+         mlog(input, ' > ', rounded)
+         it('result total should be 100', function() {
+             assert.equal(total(rounded), 100);
+         });
+     });
     describe('Array with rounded total === 99', function() {
         const input = [10.3, 20.3, 30, 39.4]
         const rounded = percentRound(input);
@@ -87,24 +95,24 @@ function total (percents) {
             assert.equal(total(rounded), 100);
         });
     });
-     describe('Array with not normalized inputs', function() {
-         const input = [1, 2, 3, 4];
-         const rounded = percentRound(input, 1);
-         mlog(input, ' > ', rounded)
-         it('result total should be 100', function() {
-             assert.equal(total(rounded), 100);
-         });
-         it('result[0] should be 10', function() {
-             assert.equal(rounded[0], 10);
-         });
-         it('result[1] should be 20', function() {
-             assert.equal(rounded[1], 20);
-         });
-         it('result[2] should be 30', function() {
-             assert.equal(rounded[2], 30);
-         });
-         it('result[3] should be 40', function() {
-             assert.equal(rounded[3], 40);
-         });
-     });
+    describe('Array with not normalized inputs', function() {
+        const input = [1, 2, 3, 4];
+        const rounded = percentRound(input, 1);
+        mlog(input, ' > ', rounded)
+        it('result total should be 100', function() {
+            assert.equal(total(rounded), 100);
+        });
+        it('result[0] should be 10', function() {
+            assert.equal(rounded[0], 10);
+        });
+        it('result[1] should be 20', function() {
+            assert.equal(rounded[1], 20);
+        });
+        it('result[2] should be 30', function() {
+            assert.equal(rounded[2], 30);
+        });
+        it('result[3] should be 40', function() {
+            assert.equal(rounded[3], 40);
+        });
+    });
 });
