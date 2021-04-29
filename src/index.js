@@ -1,4 +1,7 @@
-export default function percentRound(ipt, precision = 0) {
+export default function percentRound(ipt, precision) {
+    if (!precision) {
+        precision = 0;
+    }
     if (!Array.isArray(ipt)) {
         throw new Error('percentRound input should be an Array');
     }
