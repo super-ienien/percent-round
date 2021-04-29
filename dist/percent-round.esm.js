@@ -1,12 +1,15 @@
 /**
  * percent-round
- * Generated: 2021-01-26
+ * Generated: 2021-04-29
  * Version: 2.2.0
  * Copyright 2020 Vivien Anglesio
  * License : MIT
  */
 
-function percentRound(ipt, precision = 0) {
+function percentRound(ipt, precision) {
+    if (!precision) {
+        precision = 0;
+    }
     if (!Array.isArray(ipt)) {
         throw new Error('percentRound input should be an Array');
     }
