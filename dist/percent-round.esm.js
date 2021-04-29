@@ -1,7 +1,7 @@
 /**
  * percent-round
  * Generated: 2021-04-30
- * Version: 2.2.1
+ * Version: 2.3.0
  * Copyright 2020 Vivien Anglesio
  * License : MIT
  */
@@ -32,20 +32,21 @@ function percentRound(ipt, precision) {
         out.fill(0);
     } else {
         const powPrecision = Math.pow(10, precision);
+        const pow100 = 100 * powPrecision;
         let check100 = 0;
         for (let i = length - 1; i >= 0; i--) {
             iptPercents[i] = 100 * iptPercents[i] / total;
-            check100 += out[i] = (Math.round(iptPercents[i] * powPrecision) / powPrecision);
+            check100 += out[i] = Math.round(iptPercents[i] * powPrecision);
         }
 
-        if (check100 !== 100) {
-            const totalDiff = check100 - 100;
-            const roundGrain = 1 / powPrecision;
-            let grainCount = Math.round(Math.abs(totalDiff / roundGrain));
+        if (check100 !== pow100) {
+            const totalDiff = (check100 - pow100) ;
+            const roundGrain = 1;
+            let grainCount = Math.abs(totalDiff);
             const diffs = new Array(length);
 
             for (let i = 0; i < length; i++) {
-                diffs[i] = Math.abs(out[i] - iptPercents[i]);
+                diffs[i] = Math.abs(out[i] - iptPercents[i] * powPrecision);
             }
 
             while (grainCount > 0) {
@@ -57,13 +58,19 @@ function percentRound(ipt, precision) {
                         maxDiff = diffs[i];
                     }
                 }
-                if (check100 > 100) {
+                if (check100 > pow100) {
                     out[idx] -= roundGrain;
                 } else {
                     out[idx] += roundGrain;
                 }
                 diffs[idx] -= roundGrain;
                 grainCount--;
+            }
+        }
+
+        if (powPrecision > 1) {
+            for (let i = 0; i < length; i++) {
+                out[i] = out[i] / powPrecision;
             }
         }
     }
