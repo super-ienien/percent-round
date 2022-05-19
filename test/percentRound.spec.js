@@ -95,6 +95,19 @@ function total (percents) {
             assert.equal(total(rounded), 100);
         });
     });
+    describe('Avoid negative results', function() {
+        const input = [ 2556178, 375399.16, 13613028.38, 225041.27, 24682130.77, 927723.57, 448043.04, 369641.8, 1107498.78, 9013.48, 2352854.55, 856810.85, 772711.17, 887472.4];
+        const rounded = percentRound(input);
+        mlog(input, ' > ', rounded)
+        it('result total should be 100', function() {
+            assert.equal(total(rounded), 100);
+        });
+        it('result should not contain negative numbers', function() {
+            for (const n of rounded) {
+                assert.equal(n >= 0, true);
+            }
+        });
+    });
     describe('Array with not normalized inputs', function() {
         const input = [1, 2, 3, 4];
         const rounded = percentRound(input, 1);

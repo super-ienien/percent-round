@@ -46,6 +46,10 @@ export default function percentRound(ipt, precision) {
                 let maxDiff = diffs[0];
                 for (let i = 1; i < length; i++) {
                     if (maxDiff < diffs[i]) {
+                        // avoid negative result
+                        if (check100 > pow100 && out[i] - roundGrain < 0) {
+                            continue;
+                        }
                         idx = i;
                         maxDiff = diffs[i];
                     }

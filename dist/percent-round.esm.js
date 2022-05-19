@@ -1,6 +1,6 @@
 /**
  * percent-round
- * Generated: 2021-04-30
+ * Generated: 2022-05-19
  * Version: 2.3.0
  * Copyright 2020 Vivien Anglesio
  * License : MIT
@@ -54,6 +54,10 @@ function percentRound(ipt, precision) {
                 let maxDiff = diffs[0];
                 for (let i = 1; i < length; i++) {
                     if (maxDiff < diffs[i]) {
+                        // avoid negative result
+                        if (check100 > pow100 && out[i] - roundGrain < 0) {
+                            continue;
+                        }
                         idx = i;
                         maxDiff = diffs[i];
                     }
