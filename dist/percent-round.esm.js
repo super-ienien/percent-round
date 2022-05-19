@@ -1,7 +1,7 @@
 /**
  * percent-round
  * Generated: 2022-05-19
- * Version: 2.3.0
+ * Version: 2.3.1
  * Copyright 2020 Vivien Anglesio
  * License : MIT
  */
