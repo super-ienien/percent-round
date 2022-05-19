@@ -37,6 +37,8 @@ percentRound([60, 60]);  // [50, 50]
 ```
 
 ## Changelogs
+- 2.3.1
+  - Fix results sometimes containing negative numbers [#9](https://github.com/super-ienien/percent-round/issues/9)
 - 2.3.0
   - Fix float rounding errors [#3](https://github.com/super-ienien/percent-round/issues/3) ([more about float rounding error](https://modernweb.com/what-every-javascript-developer-should-know-about-floating-points/))
 - 2.2.1
