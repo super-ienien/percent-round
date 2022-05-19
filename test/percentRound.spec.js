@@ -26,11 +26,17 @@ function total (percents) {
         });
     });
     describe('Array with precision 0', function() {
-        const input = [10.34, 20.043, 30.04, 39.567]
+        const input = [
+            2556178, 375399.16, 13613028.38, 225041.27, 24682130.77, 927723.57, 448043.04, 369641.8, 1107498.78, 9013.48, 2352854.55, 856810.85, 772711.17,
+            887472.4,
+        ];
         const rounded = percentRound(input, 0);
         mlog(input, ' > ', rounded)
         it('result total should be 100', function() {
             assert.equal(total(rounded), 100);
+        });
+        it('result array should not contain any negative value', function() {
+            assert.equal(rounded.some(v => v < 0), false);
         });
     });
     describe('Array with precision 1', function() {
