@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/super-ienien/percent-round#readme",
   "devDependencies": {
-    "mocha": "^8.2.1",
+    "mocha": "^10.1.0",
     "mocha-logger": "^1.0.7",
     "rollup": "^2.34.2",
     "rollup-plugin-license": "^2.2.0",
